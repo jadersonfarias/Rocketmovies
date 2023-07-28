@@ -1,8 +1,10 @@
 import { Container, Form, Background } from"./styles.js";
+import { Link } from "react-router-dom";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { FiMail, FiLock} from "react-icons/fi";
-import { AiOutlineArrowLeft } from 'react-icons/ai';
+
+
 
 
 export function SignIn(){
@@ -28,7 +30,7 @@ export function SignIn(){
 
                 <Button title="Entrar"/>
 
-                <span> <AiOutlineArrowLeft/> criar conta</span>
+                <Link to="/register" > criar conta </Link>
            </Form>
 
            <Background/>

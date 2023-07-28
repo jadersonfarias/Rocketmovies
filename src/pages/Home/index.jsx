@@ -16,7 +16,7 @@ export function Home(){
                 <Content>
                     <header>
                     <h1>Meus filmes</h1>
-                    <Button_add>
+                    <Button_add to="/new">
                     <FiPlus/> Adicionar filme
                     </Button_add>
                     </header>

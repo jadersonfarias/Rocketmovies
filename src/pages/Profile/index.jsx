@@ -10,7 +10,7 @@ export function Profile(){
         return(
             <Container>
                 <header>
-                    <Return  icon={AiOutlineArrowLeft} title="voltar"/>
+                    <Return to="/" icon={AiOutlineArrowLeft} title="voltar"/>
                 </header>
 
                 <Form>

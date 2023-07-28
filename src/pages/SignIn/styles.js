@@ -34,10 +34,11 @@ export const Form = styled.form`
         margin: 48px 0px;
     }
 
-    > span {
+    > a {
         display: flex;
         align-items: center;
         justify-content: center;
+        
         margin-top:42px;
         color: ${({ theme }) => theme.COLORS.PINK};
     }

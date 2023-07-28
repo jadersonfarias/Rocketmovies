@@ -1,5 +1,7 @@
 import { Container, Form, Buttons } from "./styles";
 
+import { Link } from "react-router-dom";
+
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 import { Textarea } from "../../components/Textarea";
@@ -21,7 +23,7 @@ export function New(){
             <main>
                 <Form>
                     <header>
-                        <a href="/"><AiOutlineArrowLeft/> Voltar</a>
+                        <Link to="/"><AiOutlineArrowLeft/> Voltar</Link>
                         <h1>NOVO FILME</h1>
                     </header>
 

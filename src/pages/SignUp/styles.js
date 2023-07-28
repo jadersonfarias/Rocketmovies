@@ -32,7 +32,7 @@ export const Form = styled.form`
         margin: 48px 0px;
     }
 
-    > span {
+    > a {
         margin-top:42px;
         display: flex;
         align-items: center;

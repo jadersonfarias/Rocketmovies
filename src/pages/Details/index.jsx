@@ -7,6 +7,7 @@ import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { BiTime } from "react-icons/bi"
 
 import { Stars } from "../../components/Stars";
+import { Link } from "react-router-dom";
 
 
 export function Details(){
@@ -15,7 +16,7 @@ export function Details(){
       <Header/>
       <main>
       <Content>
-            <Return icon={AiOutlineArrowLeft} title="voltar"/>
+            <Return  to="/" icon={AiOutlineArrowLeft} title="voltar"/>
 
             <Title_stars>
             <h1>interestellar </h1>

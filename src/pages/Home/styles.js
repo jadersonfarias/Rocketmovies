@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom";
+
 
 export const Container = styled.div`
         width: 100%;
@@ -27,9 +29,11 @@ export const Content = styled.div`
 
 `
 
-export const Button_add = styled.button`
+export const Button_add = styled(Link)`
                 width: 207px;
                 height: 58px;
+                color: black;
+                
        
 
                 display: flex;
@@ -50,5 +54,5 @@ export const Button_add = styled.button`
                     font-size: 26px;
                 }
 
-
+           
  `
