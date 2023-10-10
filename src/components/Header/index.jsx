@@ -1,6 +1,8 @@
 import { Container, Profile, Title, Pesquisa  } from "./styles"
+import { useAuth } from "../../hooks/auth"
 
 export function Header(){
+    const { signOut } = useAuth()
     return(
         <Container>
             <Title>
@@ -14,7 +16,7 @@ export function Header(){
             <Profile to="/profile">
                 <div>
                 <strong>Jaderson farias</strong>
-                <button>Sair</button>
+                <button onClick={signOut}>Sair</button>
                 </div>
                 <img src="https://github.com/jadersonfarias.png" alt="foto do usuário" />
                 

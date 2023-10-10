@@ -1,4 +1,4 @@
-import { MyContext } from './myContext';
+import { AuthProvider } from './hooks/auth';
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -12,9 +12,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles/>
-      <MyContext.Provider value={{ email: 'lulu@gmail.com' }}>
+      <AuthProvider>
         <Routes/>
-      </MyContext.Provider>
+      </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>,
 )
