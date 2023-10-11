@@ -35,6 +35,33 @@ function signOut(){
     setData({});
 }
 
+async function updateProfile({ user, avatarFile}){
+    try{
+
+        if(avatarFile){
+            const fileUploadForm = new FormData() //transforma em arquivo 
+            fileUploadForm.append("avatar",avatarFile)// adiciona o nome e img
+
+            const response = await api.patch("/users/avatar", fileUploadForm);
+            user.avatar = response.data.avatar
+        }
+
+        await api.put("/users", user);
+        localStorage.setItem("@rocketnotes:user", JSON.stringify(user))//o setItem serve tanto para atualizar quanto para colocar contéudo
+
+        setData({ user, token: data.token }) //passa o mesmo token
+
+        alert("perfil atualizado!")
+
+    }catch(error){
+        if(error.response){
+            alert(error.response.data.message)
+        }else{
+            alert("Não foi possível atualizar o perfil")
+        }
+    }
+}
+
     useEffect(() => {
         const token = localStorage.getItem("@rocketnotes:token")
         const user = localStorage.getItem("@rocketnotes:user")
@@ -56,6 +83,7 @@ function signOut(){
             signIn, 
             user: data.user,
             signOut,
+            updateProfile,
             }}> 
             {children} 
         </AuthContext.Provider>
