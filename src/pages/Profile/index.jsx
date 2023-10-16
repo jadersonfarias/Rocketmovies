@@ -19,7 +19,8 @@ export function Profile(){
    const[ email,setEmail ]=useState(user.email);
    const[passwordOld, setPasswordOld]=useState();
    const[passwordNew, setPasswordNew]=useState();
-
+ 
+   //atualizando dados do usuario
    const avatarUrl = user.avatar ?  `${api.defaults.baseURL}/files/${user.avatar}`: avatarPlaceholder //caso não tenha img pega uma padrão
    const [ avatar, setAvatar ] = useState(avatarUrl);
    const [ avatarFile, setAvatarFile ] = useState(null);
