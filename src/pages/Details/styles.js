@@ -15,7 +15,12 @@ export const Container = styled.div`
         grid-area: content; //coloca para colocar a região do const
         overflow-y: scroll;
         padding: 44px 0;
+        
+ 
+       
     }
+
+
 
 `
 export const Content = styled.div`
@@ -27,6 +32,16 @@ export const Content = styled.div`
 
        text-align: justify;
 
+       > section {
+        margin: 50px 0px;
+       }
+
+       > p {
+            line-height: 24PX;
+            font-weight: 400;
+            font-size: 16px;
+       }
+
  
 
        > div{
@@ -35,7 +50,7 @@ export const Content = styled.div`
             gap: 8px;
 
             font-weight:400 ;
-            margin: 20px  0px ;
+            margin: 20px  0px 0px;
             color: ${({ theme }) => theme.COLORS.GREY_1};
 
             > img {
@@ -55,6 +70,7 @@ export const Content = styled.div`
        }
 
 
+
 `
 
 export const Title_stars = styled.div `
@@ -65,12 +81,7 @@ export const Title_stars = styled.div `
         
 `
 
-export const Text = styled.div`
-  flex-direction: column;
-  line-height: 24PX;
-  font-weight: 400;
-  font-size: 16px;
 
 
 
-`
+

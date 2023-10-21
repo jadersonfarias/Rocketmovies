@@ -1,3 +1,7 @@
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Input } from "../../components/Input"
+
 import { Container, Content, Button_add } from "./styles";
 
 import { FiPlus } from "react-icons/fi"
@@ -7,11 +11,36 @@ import { Section } from "../../components/Section"
 import { Header } from "../../components/Header";
 
 import { Note } from "../../components/Note";
+import { api } from "../../services/api";
 
 export function Home(){
+    const [ notes, setNotes ] = useState([]);
+    const [ search, setSearch] = useState("")
+
+    const navigate = useNavigate();
+
+function handleDetails(id) {
+    navigate(`/Details/${id}`);
+  }
+
+    useEffect(() => {
+        async function fetchNotes(){
+            const response = await api.get(`/notes?title=${search}`)
+            setNotes(response.data);
+        }
+
+        fetchNotes()
+    }, [search]);
+
     return(
         <Container>
-            <Header/>
+            <Header>
+                <Input 
+                placeholder="Pesquisar pelo título"
+                onChange={e => setSearch(e.target.value)}
+                />
+            </Header>
+            
             <main>
                 <Content>
                     <header>
@@ -20,36 +49,18 @@ export function Home(){
                     <FiPlus/> Adicionar filme
                     </Button_add>
                     </header>
+
                     <Section>
-                    <Note data={{ title: 'Interestelar', 
-                    text:'Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma que tenta se...',
-                    tags: [
-                        {id: '1', name: 'interestelar'},
-                        {id: '2', name: 'rocketseat'},
-                        {id: '3', name: 'rocketseat'},
-                    ]
-                    }}/>
+                    {
+                      notes.map(note => (
+                        <Note
+                            key={String(note.id)}
+                            data={note}
+                            onClick={() => handleDetails(note.id)}
+                        />
+                        ))
+                    }
                     
-                    <Note data={{ title: 'Interestelar', 
-                    text:'Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma que tenta se...',
-                    tags: [
-                        {id: '1', name: 'interestelar'},
-                        {id: '2', name: 'rocketseat'},
-                        {id: '3', name: 'rocketseat'},
-                    ]
-                    }}/>
-
-                
-
-                    <Note data={{ title: 'Interestelar', 
-                    text:'Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma que tenta se...',
-                    tags: [
-                        {id: '1', name: 'ficção cientifica'},
-                        {id: '2', name: 'drama'},
-                        {id: '3', name: 'família'},
-                    ]
-                    }}/>
-     
                     </Section>
                    
                 </Content>

@@ -13,13 +13,12 @@ export const Container = styled.div`
     border-bottom-color: ${({ theme }) => theme.COLORS.BACKGROUND_600} ;
 
     display: flex;
-    justify-content: space-around;
     align-items: center;
-
-
-   
+    padding: 0px 103px;
+    
 
 `
+/*
 export const Pesquisa = styled.div`
      > input {       
         height: 55px;
@@ -44,6 +43,7 @@ export const Pesquisa = styled.div`
 }
 
 `
+*/
 
 export const Profile = styled(Link)`
     display: flex;
@@ -91,3 +91,10 @@ export const Title = styled.div`
 
 
 `
+
+export const Search = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0 6.4rem;
+  flex-grow: 1;
+`;

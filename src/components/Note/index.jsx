@@ -11,7 +11,7 @@ export function Note({ data,  ...rest}){
         <Container {...rest}>
             <h1>{data.title}</h1>
             <Stars size={22}/>
-            <p>{data.text}</p>
+            <p>{data.description}</p>
           
 
             {

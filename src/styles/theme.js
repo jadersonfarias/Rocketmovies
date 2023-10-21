@@ -6,6 +6,7 @@ export default {  //tema global
         BACKGROUND_600: "#3E3B47",
         BACKGROUND_700: "#1C1B1E",
         BACKGROUND_TAG: "#312E38",
+        BACKGROUND_TAG_2: "#282124",
 
         WHITE: "#F4EDE8",
         PINK: "#FF859B",
@@ -13,6 +14,7 @@ export default {  //tema global
 
         GRAY_1: "#948F99",
         GRAY_2: "#262529",
+        GRAY_3: "#999591"
 
 
     }

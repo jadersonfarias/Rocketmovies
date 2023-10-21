@@ -36,7 +36,7 @@
         font-size: 16px;
          line-height: 19px;
 
-        color: ${({ theme })=> theme.COLORS.GRAY_1};
+        color: ${({ theme })=> theme.COLORS.GRAY_3};
     }
 
 

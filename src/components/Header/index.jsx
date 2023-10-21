@@ -1,23 +1,29 @@
-import { Container, Profile, Title, Pesquisa  } from "./styles"
+import { useNavigate } from "react-router-dom"
+
+import { Container, Profile, Title, Search} from "./styles"
 import { useAuth } from "../../hooks/auth"
 import  avatarPlaceholder from "../../assets/avatar_placeholder.svg"
 import { api } from "../../services/api"
 
-export function Header(){
+export function Header({children}){
     const { signOut, user } = useAuth()
+    const navigate = useNavigate()
 
+    function handleLogOut(){
+        navigate("/");
+        signOut();
+    }
+  
     const avatarUrl = user.avatar ?  `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
     return(
         <Container>
             <Title>
              <h1>rocketmovies</h1>
             </Title>
-            <Pesquisa>
-
-            <input placeholder="Pesquisar pelo título"/>
-            </Pesquisa>
             
-            <Profile to="/profile">
+            <Search>{children}</Search>
+            
+            <Profile onClick={handleLogOut}>
                 <div>
                 <strong>{user.name}</strong>
                 <button onClick={signOut}>Sair</button>

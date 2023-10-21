@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Container, Form, Buttons } from "./styles";
 
-import { Link } from "react-router-dom";
+import { Return } from "../../components/Return"; 
 
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 
@@ -67,22 +67,52 @@ export function New(){
         navigate("/")
     }
 
+    function handleBack(){
+        navigate("/")
+    }
+    
+        // function handleDelete(){
+        //    document.getElementById("new-title").value = ""
+        //    document.getElementById("new-rating").value = ""
+        //    document.getElementById("new-description").value = ""
+        //    document.getElementById("new-tag").value = []
+        // }
+
+        function handleDelete(){
+           setNewTag("")
+           document.getElementById("new-description").value = ""
+           setRating("")
+           setTitle("")
+           setTags([])
+         }
+    
     return(
         <Container>
-            <Header/>
+            <Header>
+            <Input 
+                placeholder="Pesquisar pelo título"
+                onChange={e => setSearch(e.target.value)}
+                />
+            </Header>
             <main>
                 <Form>
                     <header>
-                        <Link to="/"><AiOutlineArrowLeft/> Voltar</Link>
+                    <Return  onClick={handleBack} icon={AiOutlineArrowLeft} title="voltar"/>
                         <h1>NOVO FILME</h1>
+                        
                     </header>
 
                     <div>
                         <Input 
+                       // id="new-title"
+                       value={title}
                         placeholder="Título"
                         onChange={e => setTitle(e.target.value)}
                         />
+
                         <Input 
+                       // id="new-rating"
+                       value={rating}
                         placeholder="Sua nota (de 0 a 5)"
                         onChange={ e => setRating(e.target.value)}
                        
@@ -90,8 +120,9 @@ export function New(){
                     </div>
 
                     <Textarea 
-                    placeholder="Observações"
-                    onChange={e => setDescription(e.target.value)}
+                       id="new-description"  
+                        placeholder="Observações"
+                        onChange={e => setDescription(e.target.value)}
                     />
 
                     <Section title="Marcadores">
@@ -109,17 +140,23 @@ export function New(){
                      }
             
                       <NoteItem 
+                     // id="new-tag"
+                      value={newTag}
                       isNew 
                       placeholder="nova tag"
                       onChange={(e) => setNewTag(e.target.value)}
-                      value={newTag}
+
                       onClick={handleAddTag}
                       />
 
                     </div> 
                     </Section>
                     <Buttons>
-                        <Button className="delete" title="Excluir filme"/>
+                        <Button 
+                        onClick={handleDelete}
+                        className="delete" 
+                        title="Excluir filme"
+                        />
                         <Button  
                          title="Salvar alterações"
                          onClick={handleNewNote}
