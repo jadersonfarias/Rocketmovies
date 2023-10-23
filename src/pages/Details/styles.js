@@ -40,6 +40,7 @@ export const Content = styled.div`
             line-height: 24PX;
             font-weight: 400;
             font-size: 16px;
+            margin-bottom: 38px;
        }
 
  

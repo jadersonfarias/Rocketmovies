@@ -46,10 +46,18 @@ export function New(){
         if(!title){
             return alert("adicione um título de um filme")
         }
-        
+
         if(!rating){
-            return alert("você esqueceu de colocar uma nota para este filme")
+            return alert("Você esqueceu de dar uma nota para o filme")
         }
+
+        const isRatingValid = rating >= 0 && rating <= 5;
+        
+        if(!isRatingValid){
+            return alert("A nota do filme deve ser entre 0 e 5")
+        }
+
+     
 
         if(newTag){
             return alert("você deixou uma tag no campo para adicionar, mas não clicou em adicionar")
@@ -105,14 +113,14 @@ export function New(){
                     <div>
                         <Input 
                        // id="new-title"
-                       value={title}
+                        value={title}
                         placeholder="Título"
                         onChange={e => setTitle(e.target.value)}
                         />
 
                         <Input 
                        // id="new-rating"
-                       value={rating}
+                        value={rating}
                         placeholder="Sua nota (de 0 a 5)"
                         onChange={ e => setRating(e.target.value)}
                        
@@ -145,7 +153,7 @@ export function New(){
                       isNew 
                       placeholder="nova tag"
                       onChange={(e) => setNewTag(e.target.value)}
-
+o
                       onClick={handleAddTag}
                       />
 

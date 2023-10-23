@@ -22,6 +22,7 @@
         text-align: left;
         font-weight: 700;
         font-size: 24px;
+        margin-bottom: 8px ;
         
         color: ${({ theme }) => theme.COLORS.WHITE} ;
     }

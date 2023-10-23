@@ -3,6 +3,7 @@ import { api } from "../../services/api";
 import { useState } from "react";
 import { useAuth } from "../../hooks/auth";
 import  avatarPlaceholder from "../../assets/avatar_placeholder.svg"
+import { Navigate, useNavigate } from "react-router-dom";
 
 import { Container, Form, Avatar } from "./styles";
 import { Return } from "../../components/Return"
@@ -25,6 +26,8 @@ export function Profile(){
    const [ avatar, setAvatar ] = useState(avatarUrl);
    const [ avatarFile, setAvatarFile ] = useState(null);
 
+   const navigate = useNavigate()
+
 //função que passa os dados para a função updateProfile
   async function handleUpdate() {
     const user ={
@@ -46,10 +49,14 @@ export function Profile(){
 
   }
 
+  function handleReturn(){
+    navigate("/")
+  }
+
         return(
             <Container>
                 <header>
-                    <Return to="/" icon={AiOutlineArrowLeft} title="voltar"/>
+                    <Return onClick={handleReturn} icon={AiOutlineArrowLeft} title="voltar"/>
                 </header>
 
                 <Form>

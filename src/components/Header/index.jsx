@@ -9,6 +9,8 @@ export function Header({children}){
     const { signOut, user } = useAuth()
     const navigate = useNavigate()
 
+
+
     function handleLogOut(){
         navigate("/");
         signOut();
@@ -23,13 +25,12 @@ export function Header({children}){
             
             <Search>{children}</Search>
             
-            <Profile onClick={handleLogOut}>
+            <Profile to="/profile">
                 <div>
                 <strong>{user.name}</strong>
-                <button onClick={signOut}>Sair</button>
+                <button onClick={handleLogOut}>Sair</button>
                 </div>
-                <img src={ avatarUrl }alt={ user.name } />
-                
+                <img src={ avatarUrl }alt={ user.name } />   
             </Profile>
 
 

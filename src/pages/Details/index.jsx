@@ -11,12 +11,13 @@ import { Header } from "../../components/Header"
 import { Input } from "../../components/Input"
 import { Return } from "../../components/Return"
 import { Tag } from "../../components/Tag";
+import { Button } from "../../components/Button"
 
 
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { BiTime } from "react-icons/bi"
 
-import { Stars } from "../../components/Stars";
+import { Rating } from "../../components/Rating";
 
 
 
@@ -25,6 +26,8 @@ export function Details(){
     const [data, setData] = useState({});
     const params = useParams();
     const navigate = useNavigate()
+
+    const [loading, setLoading] = useState(false);
 
     const avatarURL = user.avatar
     ? `${api.defaults.baseURL}/files/${user.avatar}`
@@ -49,6 +52,29 @@ export function Details(){
     navigate("/")
   }
 
+  async function handleRemove() {
+    const confirm = window.confirm("Deseja realmente remover o filme?");
+
+    if (confirm) {
+      setLoading(true);
+
+      try {
+        await api.delete(`/notes/${params.id}`);
+        navigate(-1);
+      } catch (error) {
+        if (error.response) {
+          alert(error.response.data.message);
+        } else {
+          alert("Não foi possível remover o filme.");
+          console.log("Erro ao remover o filme:", error);
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+
+  }
+
     return(
     <Container>
       <Header>
@@ -63,7 +89,7 @@ export function Details(){
 
             <Title_stars>
             <h1>{data.title}</h1>
-            <Stars/>
+            <Rating grade={data.rating} isBigSize/>
             </Title_stars>
 
             
@@ -85,11 +111,17 @@ export function Details(){
                 }
             <p>{data.description}</p>
 
-           
+            <Button 
+                title="Excluir Filme"
+                loading={loading}
+                onClick={handleRemove}
+            />
            
       </Content>
+                
+            
+              
         </main>
-
 
       
     </Container>

@@ -1,16 +1,21 @@
 import { Container } from "./styles";
 
+import { useEffect, useState } from "react";
+
 import { Tag } from "../../components/Tag"
 
-import { Stars } from "../../components/Stars";
+import { Rating} from "../../components/Rating";
+
 
 
 
 export function Note({ data,  ...rest}){
+
+
     return(
         <Container {...rest}>
             <h1>{data.title}</h1>
-            <Stars size={22}/>
+            <Rating grade={data.rating}/>
             <p>{data.description}</p>
           
 
