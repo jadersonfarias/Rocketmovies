@@ -15,6 +15,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     padding: 0px 103px;
+    position: relative;
     
 
 `
@@ -49,6 +50,8 @@ export const Profile = styled(Link)`
     display: flex;
     align-items: center;
 
+
+
     > img {
         width: 56px;
         height: 56px;
@@ -57,17 +60,13 @@ export const Profile = styled(Link)`
     }
 
     > div {
+        
         display: flex;
         flex-direction: column;
         margin-right: 16px;
         line-height: 24px;
 
-        > button {
-        color: ${({theme}) => theme.COLORS.GRAY_1};
-        background:none;
-        border: none;
-        text-align: end;
-    }
+
 
     
     strong {
@@ -98,3 +97,17 @@ export const Search = styled.div`
   padding: 0 6.4rem;
   flex-grow: 1;
 `;
+
+export const ButtonLogout = styled.button`
+  border: none;
+  background: none;
+
+  color: ${({ theme }) => theme.COLORS.GRAY_1};
+
+  font-size: 14px;
+  line-height: 18px;
+
+  position: absolute;
+  bottom: 33px;
+  right: 180px;
+`
