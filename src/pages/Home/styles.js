@@ -11,6 +11,15 @@ export const Container = styled.div`
         grid-template-areas: "header"
                              "content";
 
+        ::-webkit-scrollbar {
+    width: 0.8rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.COLORS.PINK};
+    border-radius: 0.2rem;
+  }
+
         > main {
             overflow-y: scroll;
         }
@@ -19,6 +28,8 @@ export const Container = styled.div`
 export const Content = styled.div`
         width:1121px ;
         margin: 50px auto;
+
+
 
         > header {
             display: flex;
