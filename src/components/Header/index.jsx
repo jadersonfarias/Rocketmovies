@@ -25,7 +25,7 @@ export function Header({children}){
             
             <Search>{children}</Search>
             
-            <Profile to="profile">
+            <Profile to="/profile">
                 <div>
                 <strong>{user.name}</strong>
                
